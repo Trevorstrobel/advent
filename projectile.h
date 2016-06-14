@@ -16,8 +16,6 @@ public:
 
 
 	bool isDead;
-	
-
 private:
 
 	double rotation;

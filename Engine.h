@@ -36,6 +36,6 @@ private:
 	static bool isRunning;
 	static int screenWidth;
 	static int screenHeight;
-
+	SDL_Surface* windowIcon;
 
 };

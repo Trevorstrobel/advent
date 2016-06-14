@@ -59,6 +59,13 @@ bool Engine::Init()
 		printf("SDL failed to create a renderer. SDL Error:  %s\n", SDL_GetError());
 		return false;
 	}
+	windowIcon = IMG_Load("resources/player_Ship.png");
+	if (windowIcon == nullptr)
+	{
+		printf("failed to load icon. SDL Error: %s\n", SDL_GetError());
+	}
+	
+	SDL_SetWindowIcon(window, windowIcon);
 
 	background.LoadFromFile(renderer, "resources/space_bg.png");
 	return true;
@@ -112,6 +119,7 @@ void Engine::draw()
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, background.GetTexture(), NULL, NULL);
+
 	player->Render(renderer);
 	crosshair->Render(renderer);
 	SDL_RenderPresent(renderer);

@@ -22,7 +22,7 @@ void Weapons::Render(SDL_Renderer *renderer)
 
 void Weapons::Update()
 {
-	
+
 	for (std::vector<Projectile>::iterator iter = projectiles.begin(); iter != projectiles.end();)
 	{
 		if ((*iter).isDead)
@@ -36,14 +36,4 @@ void Weapons::Update()
 			++iter;
 		}
 	}
-	
-	/*for (int i = projectiles.size(); i-- > 0;)
-	{
-		projectiles[i].Update();
-		if (projectiles[i].isDead)
-		{
-			projectiles.erase(projectiles.begin() + i);
-		}
-
-	}*/
 }

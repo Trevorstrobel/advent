@@ -37,8 +37,7 @@ private:
 	int getMoveSpeed();
 	void movePlayer(Axis axis, int moveAmount);
 	double playerHealth;
-	Texture playerTexture;
-	SDL_Texture *SDLTexture;
+	
 	SDL_Rect SpriteClips[1];
 	Texture RenderTexture;
 

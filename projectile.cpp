@@ -17,7 +17,7 @@ Projectile::Projectile(SDL_Renderer *renderer, Vector2 position, Vector2 directi
 	rotation = angle;
 	this->direction = direction;
 
-	velocity = 0.1;
+	velocity = 0.6;
 	ttl = 100;
 	lifetime = 0;
 	isDead = false;
@@ -30,7 +30,7 @@ Projectile::~Projectile()
 
 void Projectile::Render(SDL_Renderer *renderer)
 {
-	SDL_Rect renderQuad = { position.X, position.Y, 8, 8 };
+	SDL_Rect renderQuad = { position.X, position.Y, 8, 8};
 	SDL_RenderCopyEx(renderer, projectileTexture, NULL, &renderQuad, rotation, NULL, SDL_FLIP_NONE); 
 }
 

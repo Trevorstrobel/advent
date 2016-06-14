@@ -1,19 +1,24 @@
 #include "Player.h"
 #include "Engine.h"
 
+static Texture texture;
+static SDL_Texture* playerTexture;
+
 Player::Player(SDL_Renderer* renderer)
 {
+	texture.LoadFromFile(renderer, "resources/player_ship.png");
+	playerTexture = texture.GetTexture();
+
+	width = texture.GetWidth();
+	height = texture.GetHeight();
 	blaster = new Weapons(renderer);
-	playerTexture.LoadFromFile(renderer, "resources/player_ship.png");
-	width = playerTexture.GetWidth();
-	height = playerTexture.GetHeight();
+	
 	SpriteAngle = 0.0;
 
 	position.X = (Engine::GetScreenWidth() / 2) - (width / 2);
 	position.Y = (Engine::GetScreenHeight() / 2) - (height / 2);
 	moveSpeed = 5;
 
-	SDLTexture = playerTexture.GetTexture();
 	lastShotTime = 0;
 }
 
@@ -100,14 +105,14 @@ Vector2 Player::GetPosition() const
 
 SDL_Texture *Player::GetPlayerTexture()
 {
-	return SDLTexture;
+	return playerTexture;
 }
 
 void Player::Render(SDL_Renderer *renderer)
 {
 	blaster->Render(renderer);
 	SDL_Rect renderQuad = { position.X, position.Y, width, height };
-	SDL_RenderCopyEx(renderer, SDLTexture, NULL, &renderQuad, angle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, playerTexture, NULL, &renderQuad, angle, NULL, SDL_FLIP_NONE);
 }
 
 void Player::shoot()
