@@ -78,12 +78,13 @@ void Engine::gameLoop()
 	player = new Player(renderer);
 	crosshair = new Crosshair(renderer);
 	input = new Input();
-	float dt = 1 / 60.0f;
+	dt = 1 / 60.0f;
 	float currentTime = SDL_GetTicks() / 1000.0f;
 
 	while (isRunning)
 	{
 		processInputs();
+
 		//update stuff
 		float newTime = SDL_GetTicks() / 1000.0f;
 		float frameTime = newTime - currentTime;
@@ -102,7 +103,7 @@ void Engine::processInputs()
 {
 	input->ProcessInput();
 	crosshair->HandleInput(input);
-	player->HandleInput(input);
+	player->HandleInput(input, dt);
 
 }
 void Engine::update()

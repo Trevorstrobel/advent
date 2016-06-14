@@ -37,5 +37,5 @@ private:
 	static int screenWidth;
 	static int screenHeight;
 	SDL_Surface* windowIcon;
-
+	float dt;
 };

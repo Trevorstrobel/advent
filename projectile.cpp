@@ -9,7 +9,7 @@ Projectile::Projectile(SDL_Renderer *renderer, Vector2 position, Vector2 directi
 	projectileTexture;
 	if (projectileTexture == nullptr)
 	{
-		texture.LoadFromFile(renderer, "resources/bulletSprite_1.png");
+		texture.LoadFromFile(renderer, "resources/bullet_Sprite.png");
 		projectileTexture = texture.GetTexture();
 	}
 

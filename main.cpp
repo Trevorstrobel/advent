@@ -9,7 +9,7 @@ int main(int argc, char* args[])
 	
 	Engine gameEngine;
 
-	gameEngine.Run(1280, 720);
+	gameEngine.Run(1900, 900);
 
 
 	return 0;
