@@ -16,7 +16,7 @@ Player::Player(SDL_Renderer* renderer)
 
 	SDLTexture = playerTexture.GetTexture();
 	lastShotTime = 0;
-	shotInterval = 50.0;
+	shotInterval = 150.0;
 }
 
 Player::~Player()
