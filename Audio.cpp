@@ -1,8 +1,8 @@
 #include "Audio.h"
 Audio::Audio() 
 {
-	bgMusic = nullptr;
-	bulletSound = nullptr;
+	bgMusic;
+	bulletSound;
 
 };
 
@@ -12,7 +12,7 @@ bool Audio::LoadAudioMedia()
 	bool successful = true;
 
 	//bg music
-	bgMusic = Mix_LoadMUS("resources/Audio/suprise.flac");
+	bgMusic = Mix_LoadMUS("resources/Audio/surprise.flac");
 	if (bgMusic == nullptr) {
 		printf("music failed to load! SDL Error: %s\n", Mix_GetError());
 		successful = false;

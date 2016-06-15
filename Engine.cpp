@@ -10,7 +10,7 @@ bool Engine::isRunning = true;
 
 Engine::Engine()
 {
-//	gameAudio;
+	gameAudio = new Audio();
 	renderer = nullptr;
 	window = nullptr;
 	// if you turn this off you can watch it do ugly antialiasing on rotation
@@ -35,6 +35,10 @@ void Engine::Run(int w, int h)
 	}
 	else
 	{
+		if (Mix_PlayingMusic() == 0) {
+
+			Mix_PlayMusic(gameBGMusic, -1);
+		}
 		gameLoop();
 	}
 }
@@ -45,6 +49,10 @@ bool Engine::Init()
 	{
 		printf("SDL failed to init SDL. SDL Error: %s\n", SDL_GetError());
 		return false;
+	}
+
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		printf("SDL mixer didnt init. SDL mixer error:  %s\n", Mix_GetError());
 	}
 
 	window = SDL_CreateWindow("Advent", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
@@ -63,10 +71,10 @@ bool Engine::Init()
 	}
 
 	gameAudio->LoadAudioMedia();
-	/*gameBGMusic = gameAudio->bgMusic;
+	gameBGMusic = gameAudio->bgMusic;
 	if (gameBGMusic == nullptr) {
 		printf("you dun goofed. no bg music");
-	}*/
+	}
 	
 
 	background.LoadFromFile(renderer, "resources/space_bg.png");
