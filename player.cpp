@@ -1,9 +1,15 @@
 #include "Player.h"
 #include "Engine.h"
 
-Player::Player(SDL_Renderer* renderer)
+Player::Player(SDL_Renderer* renderer, Audio *Audio)
 {
+	//player's weapon
 	blaster = new Weapons(renderer);
+
+	//player's weapon's sound
+	shootSound = Audio->GetShootSound();
+
+
 	playerTexture.LoadFromFile(renderer, "resources/player_ship.png");
 	width = playerTexture.GetWidth();
 	height = playerTexture.GetHeight();
@@ -52,10 +58,13 @@ void Player::HandleInput(Input* input)
 	// shooting
 	if (input->KeyPressed(SHOOT))
 	{
+
 		currentTime = SDL_GetTicks();
 		if ((currentTime - lastShotTime) > shotInterval)
 		{
 			shoot();
+			Mix_PlayChannel(-1, shootSound, 0);
+
 			lastShotTime = SDL_GetTicks();
 		}
 	}

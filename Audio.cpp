@@ -12,7 +12,7 @@ bool Audio::LoadAudioMedia()
 	bool successful = true;
 
 	//bg music
-	bgMusic = Mix_LoadMUS("resources/Audio/surprise.flac");
+	bgMusic = Mix_LoadMUS("resources/Audio/Weretheresistors.mp3");
 	if (bgMusic == nullptr) {
 		printf("music failed to load! SDL Error: %s\n", Mix_GetError());
 		successful = false;
@@ -34,8 +34,8 @@ bool Audio::LoadAudioMedia()
 //	
 //};
 
-Mix_Chunk Audio::GetShootSound() 
+Mix_Chunk* Audio::GetShootSound() 
 {
 
-	return *bulletSound;
+	return bulletSound;
 };

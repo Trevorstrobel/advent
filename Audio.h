@@ -10,7 +10,7 @@ public:
 
 	bool LoadAudioMedia();
 	//Mix_Music GetBGMusic();
-	Mix_Chunk GetShootSound();
+	Mix_Chunk* GetShootSound();
 	
 	Mix_Music *bgMusic;
 	Mix_Chunk *bulletSound;

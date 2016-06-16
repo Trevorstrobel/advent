@@ -51,8 +51,11 @@ bool Engine::Init()
 		return false;
 	}
 
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 750) < 0) {
 		printf("SDL mixer didnt init. SDL mixer error:  %s\n", Mix_GetError());
+	}
+	else {
+		Mix_AllocateChannels(10);
 	}
 
 	window = SDL_CreateWindow("Advent", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
@@ -85,7 +88,7 @@ bool Engine::Init()
 //Engine::gameLoop()  Kappa.
 void Engine::gameLoop()
 {
-	player = new Player(renderer);
+	player = new Player(renderer, gameAudio);
 	crosshair = new Crosshair(renderer);
 	input = new Input();
 	float dt = 1 / 60.0f;
@@ -147,4 +150,7 @@ int Engine::GetScreenHeight()
 void Engine::Quit()
 {
 	isRunning = false;
+	Mix_Quit();
+	IMG_Quit();
+	SDL_Quit();
 }

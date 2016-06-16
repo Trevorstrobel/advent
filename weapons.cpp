@@ -36,14 +36,4 @@ void Weapons::Update()
 			++iter;
 		}
 	}
-	
-	/*for (int i = projectiles.size(); i-- > 0;)
-	{
-		projectiles[i].Update();
-		if (projectiles[i].isDead)
-		{
-			projectiles.erase(projectiles.begin() + i);
-		}
-
-	}*/
 }

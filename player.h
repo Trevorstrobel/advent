@@ -5,11 +5,12 @@
 #include "Texture.h"
 #include "Vector2.h"
 #include "Weapons.h"
+#include "Audio.h"
 
 class Player
 {
 public:
-	Player(SDL_Renderer *renderer);
+	Player(SDL_Renderer *renderer, Audio *Audio);
 	~Player();
 
 	void Update();
@@ -34,6 +35,8 @@ private:
 	SDL_Texture *SDLTexture;
 	SDL_Rect SpriteClips[1];
 	Texture RenderTexture;
+
+	Mix_Chunk* shootSound;
 
 	//vector2 to hold position. 
 	Vector2 position;
