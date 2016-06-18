@@ -32,7 +32,7 @@ private:
 	void movePlayer();
 	double playerHealth;
 	Texture playerTexture;
-	SDL_Texture *SDLTexture;
+	SDL_Texture *playerTextureRenderable;
 	SDL_Rect SpriteClips[1];
 	Texture RenderTexture;
 

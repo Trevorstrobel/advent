@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "Texture.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Crosshair.h"
 #include "Audio.h"
 
@@ -32,6 +33,7 @@ private:
 	Input* input;
 	Crosshair* crosshair;
 	Player* player;
+	Enemy* enemy;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	Texture background;

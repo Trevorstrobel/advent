@@ -21,7 +21,7 @@ Player::Player(SDL_Renderer* renderer, Audio *Audio)
 	maxMoveSpeed = 15;
 	shotInterval = 150;
 
-	SDLTexture = playerTexture.GetTexture();
+	playerTextureRenderable = playerTexture.GetTexture();
 	lastShotTime = 0;
 }
 
@@ -117,14 +117,14 @@ Vector2 Player::GetPosition() const
 
 SDL_Texture *Player::GetPlayerTexture()
 {
-	return SDLTexture;
+	return playerTextureRenderable;
 }
 
 void Player::Render(SDL_Renderer *renderer)
 {
 	blaster->Render(renderer);
 	SDL_Rect renderQuad = { position.X, position.Y, width, height };
-	SDL_RenderCopyEx(renderer, SDLTexture, NULL, &renderQuad, angle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, playerTextureRenderable, NULL, &renderQuad, angle, NULL, SDL_FLIP_NONE);
 }
 
 void Player::shoot()

@@ -89,6 +89,7 @@ bool Engine::Init()
 void Engine::gameLoop()
 {
 	player = new Player(renderer, gameAudio);
+	enemy = new Enemy(renderer, gameAudio, player->GetPosition());
 	crosshair = new Crosshair(renderer);
 	input = new Input();
 	float dt = 1 / 60.0f;
@@ -123,6 +124,7 @@ void Engine::update()
 	if (!player->IsDead)
 	{
 		player->Update();
+		enemy->Update();
 		draw();
 	}
 }
@@ -133,6 +135,7 @@ void Engine::draw()
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, background.GetTexture(), NULL, NULL);
 	player->Render(renderer);
+	enemy->Render(renderer);
 	crosshair->Render(renderer);
 	SDL_RenderPresent(renderer);
 }

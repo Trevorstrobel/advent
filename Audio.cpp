@@ -1,9 +1,7 @@
 #include "Audio.h"
 Audio::Audio() 
 {
-	bgMusic;
-	bulletSound;
-
+	
 };
 
 bool Audio::LoadAudioMedia()
@@ -29,10 +27,6 @@ bool Audio::LoadAudioMedia()
 	return successful;
 }
 
-//Mix_Music Audio::GetBGMusic() 
-//{
-//	
-//};
 
 Mix_Chunk* Audio::GetShootSound() 
 {
